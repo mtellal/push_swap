@@ -6,7 +6,7 @@
 /*   By: mtellal <mtellal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 16:17:55 by mtellal           #+#    #+#             */
-/*   Updated: 2022/02/10 11:29:02 by mtellal          ###   ########.fr       */
+/*   Updated: 2022/02/10 17:48:54 by mtellal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ void	check_max_min_int(t_list *l, char *argv, int i, char **tab);
 int		not_uniq(t_list *d);
 int		len_tab(char **tab);
 void	create_tab_arg(t_data *d, char **argv);
+void	free_d_range(t_list *d, int i, char **tab);
+void	free_tab(char **tab);
 
 //////  UTILS_LISTS //////
 

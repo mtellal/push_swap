@@ -6,7 +6,7 @@
 /*   By: mtellal <mtellal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 18:32:48 by mtellal           #+#    #+#             */
-/*   Updated: 2022/02/10 15:55:59 by mtellal          ###   ########.fr       */
+/*   Updated: 2022/02/10 17:48:04 by mtellal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	check_max_min_int(t_list *d, char *argv, int i, char **tab)
 {
 	int		l;
 	int		err;
-	t_list	*p;
 
 	l = ft_strlen(argv);
 	err = 0;
@@ -39,16 +38,7 @@ void	check_max_min_int(t_list *d, char *argv, int i, char **tab)
 		err = 1;
 	if (err)
 	{
-		p = d;
-		while (p && i > 0)
-		{
-			p = d->next;
-			ft_lstdelone(d, free_data);
-			d = p;
-			i--;
-		}
-		if (tab)
-			free_tab(tab);
+		free_d_range(d, i, tab);
 		stop("Error\n");
 	}
 }
@@ -101,7 +91,10 @@ void	create_tab_arg(t_data *d, char **argv)
 	while (i < d->l)
 	{
 		if (!only_digit(tab[i]))
+		{
+			free_d_range(d->a, i, tab);
 			stop("Error\n");
+		}
 		check_max_min_int(d->a, tab[i], i, tab);
 		ft_lstadd_back(&d->a, ft_lstnew(malloc_digit(ft_atoi(tab[i]))));
 		i++;

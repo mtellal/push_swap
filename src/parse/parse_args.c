@@ -6,7 +6,7 @@
 /*   By: mtellal <mtellal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 16:33:16 by mtellal           #+#    #+#             */
-/*   Updated: 2022/02/10 15:55:24 by mtellal          ###   ########.fr       */
+/*   Updated: 2022/02/10 17:49:57 by mtellal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,10 @@ void	create_tab(t_data *d, int l, char **argv)
 	while (i < l)
 	{
 		if (!only_digit(argv[i]))
+		{
+			free_d_range(d->a, i, 0);
 			stop("Error\n");
+		}
 		check_max_min_int(d->a, argv[i], i, 0);
 		ft_lstadd_back(&d->a, ft_lstnew(malloc_digit(ft_atoi(argv[i]))));
 		i++;
